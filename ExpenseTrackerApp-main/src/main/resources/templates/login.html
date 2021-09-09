@@ -1,0 +1,34 @@
+<!DOCTYPE html> 
+
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" href="login.css" type="text/css">
+        <script type="text/javascript" th:src="@{/addexp.js}"></script>
+    </head>
+    <body>
+    	<h2 th:text="${message}"></h2>
+        <div class="container" id="container">
+            <div class="form-container sign-in-container">
+                <form th:action="@{/verify}" method="POST">
+                    <h1>Login</h1><br><br><br>
+                    <input type="email" placeholder="Email" name="mail" required />
+                    <input type="password" placeholder="Password" name="pass" required /><br><br>
+                    <button>Sign In</button>
+                </form>
+            </div>
+            <div class="overlay-container">
+                <div class="overlay">
+                    <div class="overlay-panel overlay-right">
+                        <h1>Welcome</h1>
+                        <h2>to</h2>
+                        <h1>TrackerX</h1>
+                        <p style="width: 350px">A convenient way to track your expenses</p>
+                        <span>Not registered yet ?</span><br>
+                        <button class="ghost" id="signUp" onclick="location.href='/'" >Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

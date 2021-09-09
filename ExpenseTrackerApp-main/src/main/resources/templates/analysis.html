@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TrackerX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="analysis.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+</head>
+<body>
+
+<div class="topnav">
+    <h2>TrackerX</h2>
+    <a th:href="@{addexp}">Add Expense</a>
+    <a th:href="@{viewexp}">View Expense</a>
+    <a th:href="@{addbal}">Add Balance</a>
+    <a th:href="@{viewbal}">View Balance</a>   
+    <a th:href="@{analysis}" id="nav">Analysis</a>    
+    <span style="color: white;margin-left: 300px;font-size: 20px" th:text="'Hey, ' + ${currentUser} + ' !'"></span>
+    <span><img th:onclick="|window.location.href='/logout'|" style="margin-left: 15px;" src="expense3.png" width="15px" height="15px" title="Logout"></span>
+</div>
+<div>    
+</div> 
+	
+<canvas id="myChart" style="width:100%;max-width:1000px"></canvas>
+    
+</body> 
+
+<script th:inline="javascript">
+document.getElementById("nav").style.backgroundColor="#ddd";
+document.getElementById("nav").style.color="black";
+
+//var xValues = ["Food", "Charity", "Bills", "Rent", "Entertainement"];
+var xValues = /*[[${listOfKeys}]]*/ "Test";
+//var yValues = [5000, 1000, 4400, 2400, 2500,100];
+var yValues = /*[[${listOfValues}]]*/ "Test1";
+//var barColors=[];
+var barColors = ["violet", "indigo","blue","green","red","yellow","purple","cyan","chocolate"];
+	document.getElementById("nav").style.backgroundColor="white";
+    document.getElementById("nav").style.color="black";
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+	scales: {
+		yAxes :[{
+			ticks: {
+				beginAtZero: true
+				}
+			}]
+		},
+    legend: {display: false},
+    title: {
+      display: true,
+      text: "Category wise Expenses"
+    }
+  }
+});
+    
+</script>  
+    
+</html>
+
+
+
+
+
+

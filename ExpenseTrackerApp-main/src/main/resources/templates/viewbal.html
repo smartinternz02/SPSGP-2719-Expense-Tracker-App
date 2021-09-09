@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TrackerX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="viewbal.css" type="text/css">
+</head>
+<body>
+
+<div class="topnav">
+    <h2>TrackerX</h2>
+    <a th:href="@{addexp}">Add Expense</a>
+    <a th:href="@{viewexp}">View Expense</a>
+    <a th:href="@{addbal}">Add Balance</a>
+    <a th:href="@{viewbal}" id="nav">View Balance</a> 
+    <a th:href="@{analysis}">Analysis</a>   
+    <span style="color: white;margin-left: 300px;font-size: 20px" th:text="'Hey, ' + ${currentUser} + ' !'"></span>
+    <span><img th:onclick="|window.location.href='/logout'|" style="margin-left: 15px;" src="expense3.png" width="15px" height="15px" title="Logout"></span>
+</div>
+<div class="expbox">
+    <div style="width: inherit;height: 100px;background-color: black;border-top-right-radius: 7px;
+                border-top-left-radius: 7px;">
+        <p class="title">Wallet Balance</p>
+    </div>
+    <div><p name="wallet" id="t1" th:text="${balance}"></p></div>
+</div>
+</body> 
+<script>
+    document.getElementById("nav").style.backgroundColor="white";
+    document.getElementById("nav").style.color="black";
+</script>
+</html>

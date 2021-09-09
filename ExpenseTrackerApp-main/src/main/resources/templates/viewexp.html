@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TrackerX</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="viewexp.css" type="text/css">
+</head>
+<body>
+
+<div class="topnav">
+    <h2>TrackerX</h2>
+    <a th:href="@{addexp}">Add Expense</a>
+    <a th:href="@{viewexp}"  id="nav">View Expense</a>
+    <a th:href="@{addbal}">Add Balance</a>
+    <a th:href="@{viewbal}">View Balance</a>  
+    <a th:href="@{analysis}">Analysis</a>  
+    <span style="color: white;margin-left: 300px;font-size: 20px" th:text="'Hey, ' + ${currentUser} + ' !'"></span>
+    <span><img th:onclick="|window.location.href='/logout'|" style="margin-left: 15px;" src="expense3.png" width="15px" height="15px" title="Logout"></span>
+</div>
+<div class="title2">Your Expenses</div>
+<div th:switch="${expenses}">
+<table id="customers" style="margin: auto; margin-top: 50px;">
+  <tr>
+    <th>Id</th>
+    <th>Amount</th>
+    <th>Date of Expense</th>
+    <th>Category</th>
+    <th></th>
+  </tr>
+  <tr th:each="exp : ${expenses}">
+    <td th:text="${exp.id}"></td>
+    <td th:text="${exp.amount}"></td>
+    <td th:text="${exp.date}"></td>
+    <td th:text="${exp.cat}"></td>
+    <td class="cent"><a th:href="@{/delexp/{id}(id=${exp.id})}" class="button">Delete</a></td>
+  </tr>
+</table>
+   
+    
+    </body>   
+    <script>
+    document.getElementById("nav").style.backgroundColor="white";
+    document.getElementById("nav").style.color="black";
+</script> 
+</html>
